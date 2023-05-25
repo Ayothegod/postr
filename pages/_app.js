@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import '@/styles/globals.css'
+import { SessionProvider } from "next-auth/react"
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps: { session, ...pageProps }, }) {
   return (
     <>
       <Head>
@@ -10,7 +11,9 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+      <SessionProvider session={session}>
+        <Component {...pageProps} />
+      </SessionProvider>
     </>
   )
 }
