@@ -14,7 +14,7 @@ export default function App({ Component, pageProps: { session, ...pageProps }, }
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SessionProvider session={session}>
-        <Toaster/>
+        <Toaster />
         <Component {...pageProps} />
       </SessionProvider>
     </>
