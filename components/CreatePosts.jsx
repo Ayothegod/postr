@@ -6,16 +6,15 @@ const CreatePosts = () => {
     const [post,setPost] = useState("")
 
     const createPost = async (e) => {
-      // e.preventDefault()
+      e.preventDefault()
         try {
           const response = await axios.post("/api/post/createPost",{post})
           console.log(response);
           if(response.status == 201) return toast.success(`post created successfully`)
-          // if(response.status == 403) return toast.success(response.data)
-          // if(response.status == 404) return toast.error(response.data)
         } catch (error) {
-          // toast.error(error.message)
-          console.log(error.response.data);
+          if(error.response.status == 403) return toast.error(error.response.data)
+          if(error.response.status == 404) return toast.error(error.response.data)
+          console.log(error);
         }
     }
 
@@ -24,7 +23,7 @@ const CreatePosts = () => {
         <textarea rows="3" className="bg-gray-300 w-full rounded p-2 outline-none" placeholder="what is on your mind?" value={post} onChange={e => setPost(e.target.value)}/>
         <div className="flex items-center justify-between mt-2">
             <p className="text-gray-400">{post.length}/300</p>
-            <button className="bg-blue-500 text-white text-sm rounded py-1 px-6 font-semibold" onClick={createPost}>create post</button>
+            <button className="bg-blue-500 text-white text-sm rounded py-1 px-6 font-semibold" onClick={createPost}>create post 😁</button>
         </div>
     </div>
   )

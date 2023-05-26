@@ -10,7 +10,7 @@ export default async function handler(req, res) {
         const session = await getServerSession(req, res, authOptions)
         if (!session) return res.status(403).json("You need to login")
         const post = req.body.post
-        if (post.length > 150) return res.status(404).json({ message: "length more than recommended" })
+        if (post.length > 30) return res.status(404).json("length is more than limit!")
         try {
             const user = await prisma.user.findUnique({
                 where:{
