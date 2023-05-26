@@ -1,7 +1,7 @@
 import Image from "next/image"
 
 const Comment = ({ commentData }) => {
-    console.log(commentData);
+    // console.log(commentData);
     return (
         <div className="flex flex-col gap-1 bg-gray-300 p-2 my-1 rounded">
             <div className="flex items-center gap-2">

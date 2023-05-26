@@ -16,7 +16,6 @@ const CreateComment = ({postId}) => {
             if(response.status == 201){toast.success(`comment created successfully`)}
             setDisable(false)
           } catch (error) {
-            console.log(error)
             setComment("")
             setDisable(false)
             if(error.response.status == 403) return toast.error(error.response.data)
@@ -27,7 +26,7 @@ const CreateComment = ({postId}) => {
     return (
         <>
             <textarea placeholder="write comment..." className="w-full rounded p-2 outline-none" value={comment} onChange={e => setComment(e.target.value)} />
-            <button className={`bg-blue-500 text-white text-sm rounded py-2 px-6 font-semibold `} onClick={CreateComment}>create comment 😎</button>
+            <button className={`bg-blue-500 text-white text-sm rounded py-2 px-6 font-semibold hover:bg-blue-800 ${disable && "cursor-not-allowed bg-blue-400"}`} onClick={CreateComment}>create comment 😎</button>
         </>
     )
 }

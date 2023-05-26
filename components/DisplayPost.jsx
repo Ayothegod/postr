@@ -9,7 +9,6 @@ const DisplayPost = () => {
 
     const fetcher = (at) => axios.get(at).then(res => res.data)
     const { data, error, isLoading } = useSWR("/api/post/getAllPosts", fetcher, { refreshInterval: 1000 })
-    console.log(data);
 
     if (isLoading) return <p>Loading...</p>
 
