@@ -28,7 +28,11 @@ const SinglePosts = () => {
           <CreateComment postId={id}/>
         </section>
         <section className="bg-white rounded p-4 flex flex-col gap-2">
-          <Comment data={data}/>
+          {
+            data && data.map((comment) => (
+              <Comment key={comment.id} commentData={comment}/>
+            ))
+          }
         </section>
       </div>
     </div>
