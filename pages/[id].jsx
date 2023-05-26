@@ -1,3 +1,4 @@
+import CreateComment from "@/components/CreateComment"
 import Header from "@/components/Header"
 import Post from "@/components/Post"
 import axios from "axios"
@@ -20,6 +21,9 @@ const SinglePosts = () => {
         <Header />
         <section>
           <Post postData={data}/>
+        </section>
+        <section className="my-4">
+          <CreateComment/>
         </section>
       </div>
     </div>
