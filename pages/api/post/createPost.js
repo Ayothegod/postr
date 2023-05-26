@@ -27,7 +27,7 @@ export default async function handler(req, res) {
                     user:true
                 }
             })
-            console.log(createdPost);
+            // console.log(createdPost);
             res.status(201).json(createdPost)
         } catch (error) {
             res.status(404).json(error.message)
