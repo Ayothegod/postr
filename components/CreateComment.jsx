@@ -27,7 +27,7 @@ const CreateComment = ({postId}) => {
     return (
         <>
             <textarea placeholder="write comment..." className="w-full rounded p-2 outline-none" value={comment} onChange={e => setComment(e.target.value)} />
-            <button className={`bg-blue-500 text-white text-sm rounded py-1 px-6 font-semibold `} onClick={CreateComment}>create post 😁</button>
+            <button className={`bg-blue-500 text-white text-sm rounded py-2 px-6 font-semibold `} onClick={CreateComment}>create comment 😎</button>
         </>
     )
 }
