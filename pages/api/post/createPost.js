@@ -20,11 +20,14 @@ export default async function handler(req, res) {
             const createdPost = await prisma.post.create({
                 data: {
                     post: post,
-                    id:user.id
+                    userId:user.id
+                },
+                include:{
+                    user:true
                 }
             })
             console.log(createdPost);
-            // res.status(201).json(post)
+            res.status(201).json(createdPost)
         } catch (error) {
             res.status(404).json(error.message)
         }
