@@ -7,7 +7,7 @@ import Post from './Post'
 const DisplayPost = () => {
 
     const fetcher = (at) => axios.get(at).then(res => res.data)
-    const { data, error, isLoading } = useSWR("/api/post/getAllPosts", fetcher)
+    const { data, error, isLoading } = useSWR("/api/post/getAllPosts", fetcher, { refreshInterval: 1000 })
 
     return (
         <div className='mt-4'>
