@@ -2,7 +2,6 @@ import Image from "next/image"
 
 
 const Post = ({postData}) => {
-    console.log(postData)
   return (
     <div className="flex flex-col gap-1 bg-white p-2 my-1 rounded">
         <div className="flex items-center gap-2">
