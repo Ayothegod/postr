@@ -1,5 +1,6 @@
 // import { Inter } from 'next/font/google'
 import CreatePosts from "@/components/CreatePosts";
+import DisplayPost from "@/components/DisplayPost";
 import { useSession,signOut } from "next-auth/react"
 import Image from "next/image";
 import Link from "next/link";
@@ -25,9 +26,10 @@ export default function Home() {
                 <button className="bg-gray-800 text-white py-2 px-6 rounded">sign in</button>
               </Link>}
           </nav>
-            <button onClick={() => signOut()}>signout</button>
+            {/* <button onClick={() => signOut()}>signout</button> */}
           <section>
             <CreatePosts/>
+            <DisplayPost/>
           </section>
         </main>
       </div>
