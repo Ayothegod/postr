@@ -17,7 +17,7 @@ const DisplayPost = () => {
         <div className='mt-4'>
             {data &&
                 data.map((post) => (
-                    <Link key={post.id} href={`/${postData.id}`}>
+                    <Link key={post.id} href={`/${post.id}`}>
                         <Post postData={post} />
                     </Link>
                 ))

@@ -19,7 +19,7 @@ const SinglePosts = () => {
       <div className="mx-4 sm:mx-auto max-w-[40rem]">
         <Header />
         <section>
-          {/* <Post/> */}
+          <Post postData={data}/>
         </section>
       </div>
     </div>
