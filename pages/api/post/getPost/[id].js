@@ -13,10 +13,14 @@ export default async function handler(req, res) {
                 where:{
                     id:postId
                 },
+                include:{
+                    user:true,
+                    comments:true
+                }
             })
 
             console.log(post);
-            // res.status(201).json(data)
+            res.status(201).json(post)
         } catch (error) {
             res.status(404).json(error.message)
         }

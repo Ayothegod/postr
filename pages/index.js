@@ -1,11 +1,10 @@
 // import { Inter } from 'next/font/google'
 import CreatePosts from "@/components/CreatePosts";
 import DisplayPost from "@/components/DisplayPost";
-import { useSession,signOut } from "next-auth/react"
+import Header from "@/components/Header";
+import { useSession } from "next-auth/react"
 import Image from "next/image";
 import Link from "next/link";
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
 
 // const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
@@ -15,20 +14,7 @@ export default function Home() {
     <>
       <div className='bg-gray-300 min-h-screen'>
         <main className="mx-4 sm:mx-auto max-w-[40rem]">
-          <nav className="flex justify-between items-center py-4">
-            <Link href="/" className="font-semibold text-gray-800 text-xl">Postr</Link>
-
-            {session.status === "authenticated" &&
-              <Link href="/dashboard">
-                {session?.data?.user?.image && <Image src={session?.data?.user?.image || <Skeleton circle={true}/>} alt={session?.data?.user?.name || ""} width={48} height={48} className="rounded-full" />}
-              </Link> 
-              }
-              {session.status === "unauthenticated" && 
-              <Link href='/auth'>
-                <button className="bg-gray-800 text-white py-2 px-6 rounded">sign in</button>
-              </Link>}
-          </nav>
-            {/* <button onClick={() => signOut()}>signout</button> */}
+          <Header/>
           <section>
             <CreatePosts/>
             <DisplayPost/>
