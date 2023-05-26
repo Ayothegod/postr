@@ -33,7 +33,6 @@ export default async function handler(req, res) {
             res.status(404).json(error.message)
         }
     }
-    // res.status(200).json({ name: 'John Doe' })
 }
 
 
