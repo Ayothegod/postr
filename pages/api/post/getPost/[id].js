@@ -15,7 +15,11 @@ export default async function handler(req, res) {
                 },
                 include:{
                     user:true,
-                    comments:true
+                    comments:{
+                        include:{
+                            user:true
+                        }
+                    }
                 }
             })
 

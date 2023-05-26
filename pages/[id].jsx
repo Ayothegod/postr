@@ -1,3 +1,4 @@
+import Comment from "@/components/Comment"
 import CreateComment from "@/components/CreateComment"
 import Header from "@/components/Header"
 import Post from "@/components/Post"
@@ -25,6 +26,9 @@ const SinglePosts = () => {
         </section>
         <section className="my-4">
           <CreateComment postId={id}/>
+        </section>
+        <section className="bg-white rounded p-4 flex flex-col gap-2">
+          <Comment data={data}/>
         </section>
       </div>
     </div>

@@ -1,8 +1,17 @@
+import Image from "next/image"
 
+const Comment = ({commentData}) => {
+    // console.log(commentData);
 
-const Comment = () => {
+              {/* {
+            data && data.map((comment) => (
+              <Comment key={comment.id} commentData={comment}/>
+            ))
+          } */}
+
   return (
-    <div>Comment</div>
+    <>
+    </>
   )
 }
 
