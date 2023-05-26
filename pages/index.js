@@ -2,7 +2,7 @@
 import CreatePosts from "@/components/CreatePosts";
 import DisplayPost from "@/components/DisplayPost";
 import Header from "@/components/Header";
-import { useSession } from "next-auth/react"
+import { useSession,signOut } from "next-auth/react"
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,6 +15,7 @@ export default function Home() {
       <div className='bg-gray-300 min-h-screen'>
         <main className="mx-4 sm:mx-auto max-w-[40rem]">
           <Header/>
+          <button onClick={() => signOut()}>Sign out</button>
           <section>
             <CreatePosts/>
             <DisplayPost/>

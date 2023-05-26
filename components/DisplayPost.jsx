@@ -13,7 +13,7 @@ const DisplayPost = () => {
     if (isLoading) return <p>Loading...</p>
 
     return (
-        <div className='mt-4'>
+        <div className='mt-4 py-4'>
             {data &&
                 data.map((post) => (
                     <Link key={post.id} href={`/${post.id}`}>
