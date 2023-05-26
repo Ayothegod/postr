@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     if (req.method === "GET") {
         try {
             const allPosts = await prisma.user.findMany()
-            console.log(allPosts);
+            // console.log(allPosts);
             res.status(201).json(allPosts)
         } catch (error) {
             res.status(404).json(error.message)
