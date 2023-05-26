@@ -19,7 +19,6 @@ export default async function handler(req, res) {
                 }
             })
 
-            console.log(post);
             res.status(201).json(post)
         } catch (error) {
             res.status(404).json(error.message)
