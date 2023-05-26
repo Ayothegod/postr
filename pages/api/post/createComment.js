@@ -2,8 +2,6 @@ import { authOptions } from 'pages/api/auth/[...nextauth]'
 import { getServerSession } from "next-auth/next"
 import prisma from '@/lib/prisma';
 
-
-
 export default async function handler(req, res) {
     if (req.method === "POST") {
 
@@ -14,23 +12,23 @@ export default async function handler(req, res) {
         if (post.length > 30) return res.status(404).json("length is more than limit!")
         if (post.length < 1) return res.status(401).json(`post can't be empty!!!`)
         try {
-            const user = await prisma.user.findUnique({
-                where:{
-                    email:session.user.email
-                }
-            })
-            const createdPost = await prisma.Comment.create({
-                data: {
-                   commentData: comment,
-                    userId:user.id,
+            // const user = await prisma.user.findUnique({
+            //     where:{
+            //         email:session.user.email
+            //     }
+            // })
+            // const createdPost = await prisma.Comment.create({
+            //     data: {
+            //        commentData: comment,
+            //         userId:user.id,
                     
-                },
-                include:{
-                    user:true
-                }
-            })
-            // console.log(createdPost);
-            res.status(201).json(createdPost)
+            //     },
+            //     include:{
+            //         user:true
+            //     }
+            // })
+            console.log(comment,postId)
+            res.status(201).json(comment,postId)
         } catch (error) {
             res.status(404).json(error.message)
         }

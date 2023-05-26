@@ -1,8 +1,7 @@
+import axios from "axios"
 import { useState } from "react"
 
-
 const CreateComment = ({postId}) => {
-    console.log(postId)
     const [comment, setComment] = useState("")
     const [disable,setDisable] = useState(false)
 
@@ -11,7 +10,7 @@ const CreateComment = ({postId}) => {
           try {
             setComment("")
             setDisable(true)
-            const response = await axios.post("/api/post/createPost",{post})
+            const response = await axios.post("/api/post/createComment",{comment,postId})
             console.log(response)
             // if(response.status == 201){toast.success(`post created successfully`)}
             setDisable(false)
