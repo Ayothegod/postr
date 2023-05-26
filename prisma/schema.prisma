@@ -18,23 +18,6 @@ model Post {
   userId    String
   user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   comments  Comment[]
-  hates  Hates[]
-}
-
-model Likes {
-  id        String    @id @default(uuid())
-  post      String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-}
-model Hates {
-  id        String    @id @default(uuid())
-  number      String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-
-  postId    String
-  post      Post      @relation(fields: [postId], references: [id], onDelete: Cascade)
 }
 
 model Comment {

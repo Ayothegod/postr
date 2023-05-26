@@ -8,9 +8,14 @@ import prisma from '@/lib/prisma';
 export default async function handler(req, res) {
     if (req.method === "GET") {
         try {
-            const allPosts = await prisma.user.find({
-                where:{
-                    id:"cli3sjapw00009co84bhkms6m"
+            const allPosts = await prisma.Post.findMany({
+
+                include: {
+                    user: true,
+                    comments: true
+                },
+                orderBy: {
+                    createdAt: "desc"
                 }
             })
             // const allPosts = await prisma.Post.findMany({
