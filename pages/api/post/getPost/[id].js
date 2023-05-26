@@ -8,21 +8,15 @@ import prisma from '@/lib/prisma';
 export default async function handler(req, res) {
     if (req.method === "GET") {
         try {
-            const allPosts = await prisma.Post.findUnique({
+            const postId = await req.query.id
+            const post = await prisma.Post.findUnique({
                 where:{
-                    id:id
+                    id:postId
                 },
-                include: {
-                    user: true,
-                    comments: true
-                },
-                orderBy: {
-                    createdAt: "desc"
-                }
             })
 
-            // console.log(allPosts);
-            res.status(201).json(allPosts)
+            console.log(post);
+            // res.status(201).json(data)
         } catch (error) {
             res.status(404).json(error.message)
         }
