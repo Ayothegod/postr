@@ -7,7 +7,7 @@ import Link from "next/link";
 // const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   const session = useSession()
-  console.log(session)
+  // console.log(session)
   return (
     <>
       <div className='bg-gray-300 min-h-screen'>
@@ -15,14 +15,15 @@ export default function Home() {
           <nav className="flex justify-between items-center py-4">
             <Link href="/" className="font-semibold text-gray-800 text-xl">Postr</Link>
 
-            {!session ?
+            {session.status === "authenticated" &&
               <Link href="/dashboard">
                 {session?.data?.user?.image && <Image src={session?.data?.user?.image || ""} alt={session?.data?.user?.name || ""} width={48} height={48} className="rounded-full" />}
-              </Link> :
+              </Link> 
+              }
+              {session.status === "unauthenticated" && 
               <Link href='/auth'>
                 <button className="bg-gray-800 text-white py-2 px-6 rounded">sign in</button>
-              </Link>
-            }
+              </Link>}
           </nav>
             <button onClick={() => signOut()}>signout</button>
           <section>

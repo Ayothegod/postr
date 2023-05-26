@@ -5,12 +5,13 @@ import toast from "react-hot-toast"
 const CreatePosts = () => {
     const [post,setPost] = useState("")
 
-    const createPost = async () => {
+    const createPost = async (e) => {
+      // e.preventDefault()
         const response = await axios.post("/api/post/createPost",{post})
         console.log(response);
-        if(response.status == 201) return toast.success("post created")
-        if(response.status == 403) return toast.success("you are not authorized")
-        if(response.status == 404) return toast.error("error creating post")
+        if(response.status == 201) return toast.success(`post created successfully `)
+        if(response.status == 403) return toast.success(response.data)
+        if(response.status == 404) return toast.error(response.data)
     }
 
   return (
