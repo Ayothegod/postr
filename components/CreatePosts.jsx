@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useState } from "react"
+import toast from "react-hot-toast"
 
 const CreatePosts = () => {
     const [post,setPost] = useState("")
@@ -7,6 +8,9 @@ const CreatePosts = () => {
     const createPost = async () => {
         const response = await axios.post("/api/post/createPost",{post})
         console.log(response);
+        if(response.status == 201) return toast.success("post created")
+        if(response.status == 403) return toast.success("you are not authorized")
+        if(response.status == 404) return toast.error("error creating post")
     }
 
   return (
