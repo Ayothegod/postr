@@ -8,11 +8,7 @@ import prisma from '@/lib/prisma';
 export default async function handler(req, res) {
     if (req.method === "GET") {
         try {
-            const allPosts = await prisma.Post.findMany({
-                include:{
-                    user:true
-                }
-            })
+            const allPosts = await prisma.user.findMany()
             console.log(allPosts);
             res.status(201).json(allPosts)
         } catch (error) {
