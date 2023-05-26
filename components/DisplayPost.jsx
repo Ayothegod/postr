@@ -11,7 +11,7 @@ const DisplayPost = () => {
 
     return (
         <div className='mt-4'>
-            {
+            { data &&
                 data.map((post) => (
                     <Post key={post.id} postData={post}/>
                 ))
