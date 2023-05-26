@@ -5,7 +5,8 @@ const CreatePosts = () => {
     const [post,setPost] = useState("")
 
     const createPost = async () => {
-        // const response = await axios.post("")
+        const response = await axios.post("/api/post/createPost",post)
+        console.log(response);
     }
 
   return (
