@@ -4,6 +4,8 @@ import DisplayPost from "@/components/DisplayPost";
 import { useSession,signOut } from "next-auth/react"
 import Image from "next/image";
 import Link from "next/link";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 // const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
@@ -18,7 +20,7 @@ export default function Home() {
 
             {session.status === "authenticated" &&
               <Link href="/dashboard">
-                {session?.data?.user?.image && <Image src={session?.data?.user?.image || ""} alt={session?.data?.user?.name || ""} width={48} height={48} className="rounded-full" />}
+                {session?.data?.user?.image && <Image src={session?.data?.user?.image || <Skeleton circle={true}/>} alt={session?.data?.user?.name || ""} width={48} height={48} className="rounded-full" />}
               </Link> 
               }
               {session.status === "unauthenticated" && 
