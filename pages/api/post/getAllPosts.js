@@ -18,16 +18,8 @@ export default async function handler(req, res) {
                     createdAt: "desc"
                 }
             })
-            // const allPosts = await prisma.Post.findMany({
-            //     include:{
-            //         user:true
-            //     },
-            //     orderBy:{
-            //         createdAt:"desc"
-            //     }
-            // })
 
-            console.log(allPosts);
+            // console.log(allPosts);
             res.status(201).json(allPosts)
         } catch (error) {
             res.status(404).json(error.message)
