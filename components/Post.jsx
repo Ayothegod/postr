@@ -3,7 +3,7 @@ import Link from "next/link";
 
 
 const Post = ({postData}) => {
-  console.log(postData);
+  // console.log(postData);
   return (
     <Link href={`/${postData.id}`} className="flex flex-col gap-1 bg-white p-2 my-1 rounded">
         <div className="flex items-center gap-2">
