@@ -4,17 +4,19 @@ import toast from "react-hot-toast"
 
 const CreatePosts = () => {
     const [post,setPost] = useState("")
+    const [disable,setDisable] = useState(false)
 
     const createPost = async (e) => {
       e.preventDefault()
         try {
+          setPost("")
           const response = await axios.post("/api/post/createPost",{post})
-          console.log(response);
           if(response.status == 201) return toast.success(`post created successfully`)
         } catch (error) {
+          setPost("")
           if(error.response.status == 403) return toast.error(error.response.data)
+          if(error.response.status == 401) return toast.error(error.response.data)
           if(error.response.status == 404) return toast.error(error.response.data)
-          console.log(error);
         }
     }
 
