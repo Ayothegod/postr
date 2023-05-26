@@ -13,24 +13,24 @@ export default async function handler(req, res) {
         if (comment.length < 1) return res.status(401).json(`post can't be empty!!!`)
         try {
             
-            // const user = await prisma.user.findUnique({
-            //     where:{
-            //         email:session.user.email
-            //     }
-            // })
-            // const createdPost = await prisma.Comment.create({
-            //     data: {
-            //        commentData: comment,
-            //         userId:user.id,
-                    
-            //     },
-            //     include:{
-            //         user:true
-            //     }
-            // })
+            const user = await prisma.user.findUnique({
+                where:{
+                    email:session.user.email
+                }
+            })
+            const createdComment = await prisma.Comment.create({
+                data: {
+                   commentData: comment,
+                    userId:user.id,
+                    postId:postId
+                },
+                include:{
+                    user:true
+                }
+            })
 
-            console.log(comment,postId)
-            res.status(201).json(comment,postId)
+            console.log(createdComment)
+            res.status(201).json(createdComment)
         } catch (error) {
             res.status(404).json(error.message)
         }
