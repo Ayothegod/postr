@@ -25,7 +25,8 @@ export default async function handler(req, res) {
                     postId:postId
                 },
                 include:{
-                    user:true
+                    user:true,
+                    post:true
                 }
             })
 
