@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useState } from "react"
+import toast from "react-hot-toast"
 
 const CreateComment = ({postId}) => {
     const [comment, setComment] = useState("")
@@ -8,19 +9,19 @@ const CreateComment = ({postId}) => {
     const CreateComment = async (e) => {
         e.preventDefault()
           try {
+              setComment("")
+              setDisable(true)
               const response = await axios.post("/api/post/createComment",{comment,postId})
               console.log(response)
-              // setComment("")
-              // setDisable(true)
-            // if(response.status == 201){toast.success(`post created successfully`)}
-            // setDisable(false)
+            if(response.status == 201){toast.success(`comment created successfully`)}
+            setDisable(false)
           } catch (error) {
             console.log(error)
-            // setComment("")
-            // setDisable(false)
-            // if(error.response.status == 403) return toast.error(error.response.data)
-            // if(error.response.status == 401) return toast.error(error.response.data)
-            // if(error.response.status == 404) return toast.error(error.response.data)
+            setComment("")
+            setDisable(false)
+            if(error.response.status == 403) return toast.error(error.response.data)
+            if(error.response.status == 401) return toast.error(error.response.data)
+            if(error.response.status == 404) return toast.error(error.response.data)
           }
       }
     return (
