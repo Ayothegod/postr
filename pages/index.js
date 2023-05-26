@@ -16,7 +16,7 @@ export default function Home() {
 
             {session ?
               <Link href="/dashboard">
-                <Image src={session?.data?.user?.image || ""} alt={session?.data?.user?.name || ""} width={48} height={48} className="rounded-full" />
+                {session?.data?.user?.image && <Image src={session?.data?.user?.image || ""} alt={session?.data?.user?.name || ""} width={48} height={48} className="rounded-full" />}
               </Link> :
               <button className="bg-gray-800 text-white py-2 px-6 rounded">sign in</button>
             }
