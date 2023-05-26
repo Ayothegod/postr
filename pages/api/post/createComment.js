@@ -9,9 +9,10 @@ export default async function handler(req, res) {
         if (!session) return res.status(403).json("You need to login")
         const comment = req.body.comment
         const postId = req.body.postId
-        if (post.length > 30) return res.status(404).json("length is more than limit!")
-        if (post.length < 1) return res.status(401).json(`post can't be empty!!!`)
+        if (comment.length > 30) return res.status(404).json("length is more than limit!")
+        if (comment.length < 1) return res.status(401).json(`post can't be empty!!!`)
         try {
+            
             // const user = await prisma.user.findUnique({
             //     where:{
             //         email:session.user.email
@@ -27,6 +28,7 @@ export default async function handler(req, res) {
             //         user:true
             //     }
             // })
+
             console.log(comment,postId)
             res.status(201).json(comment,postId)
         } catch (error) {
