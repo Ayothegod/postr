@@ -11,6 +11,7 @@ const DisplayPost = () => {
     const { data, error, isLoading } = useSWR("/api/post/getAllPosts", fetcher, { refreshInterval: 1000 })
     console.log(data)
     if (isLoading) return <p>Loading...</p>
+    if (error) return <p>error {error}</p>
 
     return (
         <div className='mt-4 py-4'>
