@@ -9,13 +9,13 @@ const DisplayPost = () => {
 
     const fetcher = (at) => axios.get(at).then(res => res.data)
     const { data, error, isLoading } = useSWR("/api/post/getAllPosts", fetcher, { refreshInterval: 1000 })
-
+    console.log(data)
     if (isLoading) return <p>Loading...</p>
 
     return (
         <div className='mt-4 py-4'>
             {data &&
-                data.map((post) => (
+                data?.allPosts.map((post) => (
                     <Link key={post.id} href={`/${post.id}`}>
                         <Post postData={post} />
                     </Link>
