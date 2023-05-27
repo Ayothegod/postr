@@ -9,7 +9,7 @@ import Link from "next/link";
 // const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   const session = useSession()
-  console.log(session)
+  // console.log(session)
   return (
     <>
       <div className='bg-gray-300 min-h-screen'>

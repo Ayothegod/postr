@@ -11,7 +11,6 @@ const SinglePosts = () => {
   const id = router.query.id
   const fetcher = (at) => axios.get(at).then(res => res.data)
   const { data, error, isLoading } = useSWR(`/api/post/getPost/${id}`, fetcher,{ refreshInterval: 1000 })
-  console.log(data);
   if(error) return <p>Error while fetching post</p>
   if(isLoading) return <p>Post Loading</p>
 
