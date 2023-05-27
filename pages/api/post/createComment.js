@@ -29,9 +29,9 @@ export default async function handler(req, res) {
                     post: true
                 }
             })
-            res.status(201).json(createdComment)
+            res.status(201).json({createdComment})
         } catch (error) {
-            res.status(404).json(error.message)
+            res.status(404).json({message:error.message})
         }
     }
 }

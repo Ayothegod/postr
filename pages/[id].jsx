@@ -11,7 +11,7 @@ const SinglePosts = () => {
   const id = router.query.id
   const fetcher = (at) => axios.get(at).then(res => res.data)
   const { data, error, isLoading } = useSWR(`/api/post/getPost/${id}`, fetcher,{ refreshInterval: 1000 })
-
+  console.log(data);
   if(error) return <p>Error while fetching post</p>
   if(isLoading) return <p>Post Loading</p>
 
@@ -20,14 +20,14 @@ const SinglePosts = () => {
       <div className="mx-4 sm:mx-auto max-w-[40rem]">
         <Header />
         <section>
-          <Post postData={data}/>
+          <Post postData={data.post}/>
         </section>
         <section className="my-4">
           <CreateComment postId={id}/>
         </section>
         <section className="bg-white rounded p-4 flex flex-col gap-2">
           {
-            data && data?.comments.map((comment) => (
+            data && data?.post?.comments.map((comment) => (
               <Comment key={comment.id} commentData={comment}/>
             ))
           }

@@ -12,6 +12,7 @@ const CreatePosts = () => {
           setPost("")
           setDisable(true)
           const response = await axios.post("/api/post/createPost",{post})
+          console.log(response);
           if(response.status == 201){toast.success(`post created successfully`)}
           setDisable(false)
         } catch (error) {

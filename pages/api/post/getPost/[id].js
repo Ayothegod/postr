@@ -26,9 +26,9 @@ export default async function handler(req, res) {
                 }
             })
 
-            res.status(201).json(post)
+            res.status(201).json({post})
         } catch (error) {
-            res.status(404).json(error.message)
+            res.status(404).json({message:error.message})
         }
     }
 }
