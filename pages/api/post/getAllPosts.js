@@ -1,12 +1,12 @@
-// import NextCors from 'nextjs-cors';
+import NextCors from 'nextjs-cors';
 import prisma from '@/lib/prisma';
 
 export default async function handler(req, res) {
-    // await NextCors(req, res, {
-    //     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-    //     origin: '*',
-    //     optionsSuccessStatus: 200,
-    //  });
+    await NextCors(req, res, {
+        methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+        origin: '*',
+        optionsSuccessStatus: 200,
+     });
     if (req.method === "GET") {
         try {
             const allPosts = await prisma.Post.findMany({
