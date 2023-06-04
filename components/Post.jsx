@@ -1,11 +1,12 @@
 import axios from "axios";
 import Image from "next/image"
 import Link from "next/link";
+import { useState } from "react";
 import toast from "react-hot-toast"
+import DeleteModal from "./deleteModal";
 
 const Post = ({postData,dashboard}) => {
-  // console.log(dashboard);
-  // console.log(postData.id);
+  const [deleteModal,setDeleteModal] = useState(false)
   const deletePost = async (id) => {
     try {
       const response = await axios.post("/api/post/deletePost",{id})
@@ -27,7 +28,11 @@ const Post = ({postData,dashboard}) => {
             <p className=" text-sm text-gray-600">{postData?.comments.length} comments</p>
             {
               dashboard && 
-              <button className="text-red-600 font-bold text-lg" onClick={() => deletePost(postData?.id)}>delete</button>
+              <button className="text-red-600 font-bold text-lg" onClick={() => setDeleteModal(!deleteModal)}>delete</button>
+            }
+            {
+              deleteModal && 
+              <DeleteModal setDeleteModal={setDeleteModal} deleteModal={deleteModal}/>
             }
         </div>
     </div>
