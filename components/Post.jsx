@@ -5,12 +5,11 @@ import Link from "next/link";
 
 const Post = ({postData,dashboard}) => {
   // console.log(dashboard);
-  // console.log(postData);
+  // console.log(postData.id);
   const deletePost = async (id) => {
     try {
-      // console.log(id);
-      const response = await axios.delete(`/api/post/deletePost/${id}`)
-      console.log("response");
+      const response = await axios.post("/api/post/deletePost",{id})
+      console.log(response);
     } catch (error) {
       console.log(error);
     }
