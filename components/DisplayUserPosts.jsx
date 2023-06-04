@@ -15,7 +15,8 @@ const DisplayUserPosts = () => {
     return (
         <div className='mt-0 pb-4'>
             {
-                data.allPosts.length < 1 && "no post yet"
+                data.allPosts.length < 1 && 
+                <p className='flex items-center justify-center mt-20'>no post Available</p>
             }
             {data &&
                 data?.allPosts.map((post) => (

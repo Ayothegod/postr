@@ -1,7 +1,7 @@
 import axios from "axios";
 import Image from "next/image"
 import Link from "next/link";
-
+import toast from "react-hot-toast"
 
 const Post = ({postData,dashboard}) => {
   // console.log(dashboard);
@@ -9,7 +9,7 @@ const Post = ({postData,dashboard}) => {
   const deletePost = async (id) => {
     try {
       const response = await axios.post("/api/post/deletePost",{id})
-      console.log(response);
+      if(response.status == 201){toast.success(`post deleted`)}
     } catch (error) {
       console.log(error);
     }
