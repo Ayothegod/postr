@@ -4,17 +4,10 @@ import Link from "next/link";
 import { useState } from "react";
 import toast from "react-hot-toast"
 import DeleteModal from "./deleteModal";
+import ModalOff from "./ModalOff";
 
 const Post = ({postData,dashboard}) => {
   const [deleteModal,setDeleteModal] = useState(false)
-  const deletePost = async (id) => {
-    try {
-      const response = await axios.post("/api/post/deletePost",{id})
-      if(response.status == 201){toast.success(`post deleted`)}
-    } catch (error) {
-      console.log(error);
-    }
-  }
   return (
     <div className="flex flex-col gap-1 bg-white p-2 my-1 rounded">
         <div className="flex items-center gap-2">
@@ -32,7 +25,7 @@ const Post = ({postData,dashboard}) => {
             }
             {
               deleteModal && 
-              <DeleteModal setDeleteModal={setDeleteModal} deleteModal={deleteModal}/>
+              <ModalOff setDeleteModal={setDeleteModal} id={postData.id} deleteModal={deleteModal}/>
             }
         </div>
     </div>
