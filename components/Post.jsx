@@ -2,8 +2,6 @@ import axios from "axios";
 import Image from "next/image"
 import Link from "next/link";
 import { useState } from "react";
-import toast from "react-hot-toast"
-import DeleteModal from "./deleteModal";
 import ModalOff from "./ModalOff";
 
 const Post = ({postData,dashboard}) => {
