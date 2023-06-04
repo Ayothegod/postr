@@ -1,8 +1,20 @@
+import axios from "axios";
 import Image from "next/image"
 import Link from "next/link";
 
 
-const Post = ({postData}) => {
+const Post = ({postData,dashboard}) => {
+  // console.log(dashboard);
+  // console.log(postData);
+  const deletePost = async (id) => {
+    try {
+      // console.log(id);
+      const response = await axios.delete(`/api/post/deletePost/${id}`)
+      console.log("response");
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <div className="flex flex-col gap-1 bg-white p-2 my-1 rounded">
         <div className="flex items-center gap-2">
@@ -12,8 +24,12 @@ const Post = ({postData}) => {
         <div>
             <p className=" text-gray-800 ">{postData?.post}</p>
         </div>
-        <div>
+        <div className="flex gap-4 items-center ">
             <p className=" text-sm text-gray-600">{postData?.comments.length} comments</p>
+            {
+              dashboard && 
+              <button className="text-red-600 font-bold text-lg" onClick={() => deletePost(postData?.id)}>delete</button>
+            }
         </div>
     </div>
   )
