@@ -19,7 +19,7 @@ export default async function handler(req, res) {
                     createdAt: "desc"
                 }
             })
-
+            console.log(allPosts);
             res.status(201).json({allPosts})
         } catch (error) {
             res.status(404).json({message:error.message})
