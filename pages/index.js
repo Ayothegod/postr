@@ -17,7 +17,7 @@ export default function Home() {
           <Header/>
           <button onClick={() => signOut()}>Sign out</button>
           <section>
-            Hello
+            Hello postrs
             <CreatePosts/>
             <DisplayPost/>
           </section>
