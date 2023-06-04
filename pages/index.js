@@ -15,9 +15,8 @@ export default function Home() {
       <div className='bg-gray-300 min-h-screen'>
         <main className="mx-4 sm:mx-auto max-w-[40rem]">
           <Header/>
-          <button onClick={() => signOut()}>Sign out</button>
+          {/* <button onClick={() => signOut()}>Sign out</button> */}
           <section>
-            Hello postrsrtwert
             <CreatePosts/>
             <DisplayPost/>
           </section>
