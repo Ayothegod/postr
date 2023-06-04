@@ -12,7 +12,7 @@ const Header = () => {
 
             {session.status === "authenticated" &&
                 <Link href="/dashboard">
-                    {session?.data?.user?.image && <Image src={session?.data?.user?.image || <Skeleton circle={true} />} alt={session?.data?.user?.name || ""} width={48} height={48} className="rounded-full" />}
+                    {session?.data?.user?.image && <Image src={session?.data?.user?.image || <Skeleton circle={true} />} alt={session?.data?.user?.name || ""} width={36} height={36} className="rounded-full" />}
                 </Link>
             }
             {session.status === "unauthenticated" &&
