@@ -15,6 +15,9 @@ const DisplayPost = () => {
 
     return (
         <div className='mt-4 py-4'>
+            {
+                data.allPosts.length < 1 && "no post yet"
+            }
             {data &&
                 data?.allPosts.map((post) => (
                     <Link key={post.id} href={`/${post.id}`}>
