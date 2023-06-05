@@ -4,18 +4,31 @@ import Link from "next/link";
 import { useState } from "react";
 import ModalOff from "./ModalOff";
 import { AiFillHeart } from "react-icons/ai"
+import toast from "react-hot-toast"
+
 
 const Post = ({ postData, dashboard }) => {
   // const postId = postData.id
   // console.log(postId);
   const [deleteModal, setDeleteModal] = useState(false)
   const [clickLike, setClickLike] = useState(false)
-  const addLike = async(id) => {
+  const addLike = async (id) => {
     const idx = id.id
-    console.log(idx);
-    console.log("like");
+    try {
+      console.log(idx);
+      const response = await axios.post("/api/post/like", { idx })
+      console.log(response);
+      // if (response.status == 201) { toast.success(`post created successfully`) }
+      // setClickLike(true)
+      console.log("done");
+    } catch (error) {
+      console.log(error);
+      // setClickLike(false)
+      // if (error.response.status == 403) return toast.error(error.response.data)
+      // if (error.response.status == 404) return toast.error(error.response.data)
+    }
   }
-  const unLike = async() => {
+  const unLike = async () => {
     console.log("unlike");
   }
   return (
@@ -37,8 +50,8 @@ const Post = ({ postData, dashboard }) => {
         <div className="flex gap-12 items-center ">
 
           <p className=" text-sm text-gray-600 flex items-center gap-1" onClick={() => setClickLike(!clickLike)}>
-          {!clickLike && <AiFillHeart className={`text-xl `} onClick={() => addLike({id:postData.id})}/>}
-          {clickLike && <AiFillHeart className={`text-xl text-red-600`} onClick={unLike}/>}
+            {!clickLike && <AiFillHeart className={`text-xl `} onClick={() => addLike({ id: postData.id })} />}
+            {clickLike && <AiFillHeart className={`text-xl text-red-600`} onClick={unLike} />}
 
             {postData.likes.length}
             {/* like */}
