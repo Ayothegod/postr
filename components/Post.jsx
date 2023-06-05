@@ -8,28 +8,28 @@ import toast from "react-hot-toast"
 
 
 const Post = ({ postData, dashboard }) => {
-  // const postId = postData.id
-  // console.log(postId);
   const [deleteModal, setDeleteModal] = useState(false)
   const [clickLike, setClickLike] = useState(false)
   const addLike = async (id) => {
     const idx = id.id
     try {
       console.log(idx);
-      const response = await axios.post("/api/post/like", { idx })
-      console.log(response);
-      // if (response.status == 201) { toast.success(`post created successfully`) }
+      // const response = await axios.post("/api/post/like", { idx })
       // setClickLike(true)
-      console.log("done");
     } catch (error) {
       console.log(error);
-      // setClickLike(false)
-      // if (error.response.status == 403) return toast.error(error.response.data)
-      // if (error.response.status == 404) return toast.error(error.response.data)
+      setClickLike(false)
+      if (error.response.status == 403) return toast.error(error.response.data)
+      if (error.response.status == 404) return toast.error(error.response.data)
     }
   }
-  const unLike = async () => {
-    console.log("unlike");
+  const unLike = async (id) => {
+    const idx = id.id
+    try {
+      console.log(idx);
+    } catch (error) {
+      console.log(error);
+    }
   }
   return (
     <div className="flex flex-col gap-1 bg-white px-4 py-2 my-1 rounded ">
@@ -51,7 +51,7 @@ const Post = ({ postData, dashboard }) => {
 
           <p className=" text-sm text-gray-600 flex items-center gap-1" onClick={() => setClickLike(!clickLike)}>
             {!clickLike && <AiFillHeart className={`text-xl `} onClick={() => addLike({ id: postData.id })} />}
-            {clickLike && <AiFillHeart className={`text-xl text-red-600`} onClick={unLike} />}
+            {clickLike && <AiFillHeart className={`text-xl text-red-600`} onClick={() => unLike({ id: postData.id })} />}
 
             {postData.likes.length}
             {/* like */}
