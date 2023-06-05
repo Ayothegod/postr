@@ -25,8 +25,11 @@ const Post = ({ postData, dashboard }) => {
       </Link>
       <div className="border-t border-dotted border-gray-200 py-1">
         <div className="flex gap-12 items-center ">
+
           <p className=" text-sm text-gray-600 flex items-center gap-1" onClick={() => setClickLike(!clickLike)}>
-            <AiFillHeart className={`text-xl ${clickLike && "text-red-600"}`}/>
+          {!clickLike && <AiFillHeart className={`text-xl `} />}
+          {clickLike && <AiFillHeart className={`text-xl text-red-600`} />}
+
             {postData.likes.length}
             {/* like */}
           </p>
