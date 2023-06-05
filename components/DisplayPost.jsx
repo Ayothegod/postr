@@ -4,13 +4,13 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import Post from './Post'
 import Link from 'next/link'
-import { useEffect,useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const DisplayPost = () => {
     const fetcher = (at) => axios.get(at).then(res => res.data)
     const { data, error, isLoading } = useSWR("/api/post/getAllPosts", fetcher, { refreshInterval: 1000 })
     console.log(data);
-    if (isLoading) return <p>Loading...</p>
+    if (isLoading) return <p>Loading data...</p>
     if (error) return <p>cant fetch data... </p>
 
     return (
@@ -20,9 +20,7 @@ const DisplayPost = () => {
             }
             {data &&
                 data?.allPosts.map((post) => (
-                    <Link key={post.id} href={`/${post.id}`}>
-                        <Post postData={post} />
-                    </Link>
+                    <Post key={post.id} postData={post} />
                 ))
             }
         </div>
