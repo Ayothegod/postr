@@ -8,27 +8,25 @@ import toast from "react-hot-toast"
 
 
 const Post = ({ postData, dashboard }) => {
+  // console.log(postData);
   const [deleteModal, setDeleteModal] = useState(false)
   const [clickLike, setClickLike] = useState(false)
+  const [like, setLike] = useState(false)
+
   const addLike = async (id) => {
     const idx = id.id
     try {
-      console.log(idx);
-      // const response = await axios.post("/api/post/like", { idx })
-      // setClickLike(true)
+      const response = await axios.post("/api/post/like", { idx })
     } catch (error) {
-      console.log(error);
-      setClickLike(false)
-      if (error.response.status == 403) return toast.error(error.response.data)
-      if (error.response.status == 404) return toast.error(error.response.data)
+      console.log(error.response.data);
     }
   }
   const unLike = async (id) => {
     const idx = id.id
     try {
-      console.log(idx);
+      const response = await axios.post("/api/post/unlike", { idx })
     } catch (error) {
-      console.log(error);
+      console.log(error.response.data);
     }
   }
   return (
@@ -49,13 +47,12 @@ const Post = ({ postData, dashboard }) => {
       <div className="border-t border-dotted border-gray-200 py-1">
         <div className="flex gap-12 items-center ">
 
-          <p className=" text-sm text-gray-600 flex items-center gap-1" onClick={() => setClickLike(!clickLike)}>
+          {/* <p className=" text-sm text-gray-600 flex items-center gap-1" onClick={() => setClickLike(!clickLike)}>
             {!clickLike && <AiFillHeart className={`text-xl `} onClick={() => addLike({ id: postData.id })} />}
             {clickLike && <AiFillHeart className={`text-xl text-red-600`} onClick={() => unLike({ id: postData.id })} />}
 
             {postData.likes.length}
-            {/* like */}
-          </p>
+          </p> */}
           <p className=" text-sm text-gray-600">{postData?.comments.length} comments</p>
           {
             dashboard &&
