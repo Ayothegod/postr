@@ -6,9 +6,18 @@ import ModalOff from "./ModalOff";
 import { AiFillHeart } from "react-icons/ai"
 
 const Post = ({ postData, dashboard }) => {
-  console.log(postData);
+  // const postId = postData.id
+  // console.log(postId);
   const [deleteModal, setDeleteModal] = useState(false)
   const [clickLike, setClickLike] = useState(false)
+  const addLike = async(id) => {
+    const idx = id.id
+    console.log(idx);
+    console.log("like");
+  }
+  const unLike = async() => {
+    console.log("unlike");
+  }
   return (
     <div className="flex flex-col gap-1 bg-white px-4 py-2 my-1 rounded ">
       <Link href={`/${postData.id}`}>
@@ -23,12 +32,13 @@ const Post = ({ postData, dashboard }) => {
 
         </div>
       </Link>
+
       <div className="border-t border-dotted border-gray-200 py-1">
         <div className="flex gap-12 items-center ">
 
           <p className=" text-sm text-gray-600 flex items-center gap-1" onClick={() => setClickLike(!clickLike)}>
-          {!clickLike && <AiFillHeart className={`text-xl `} />}
-          {clickLike && <AiFillHeart className={`text-xl text-red-600`} />}
+          {!clickLike && <AiFillHeart className={`text-xl `} onClick={() => addLike({id:postData.id})}/>}
+          {clickLike && <AiFillHeart className={`text-xl text-red-600`} onClick={unLike}/>}
 
             {postData.likes.length}
             {/* like */}
